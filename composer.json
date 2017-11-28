@@ -1,5 +1,5 @@
 {
-    "name": "omcr/poll",
+    "name": "lslsoft/yii2-poll",
     "type": "yii2-extension",
     "description": "A poll widget for yii2",
     "keywords": [
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "omcr\\poll\\": ""
+            "omr\\poll\\": ""
         }
     },
     "extra": {
