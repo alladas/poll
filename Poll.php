@@ -158,7 +158,7 @@ class Poll extends Widget
         }
         $searchModel = new PollsResultSearch();
         $dataProvider = $searchModel->search(['id_poll' => $this->idPoll]);
-        if ($dataProvider->count) {
+        if ($dataProvider->count && Yii::$app->session->get('poll-'.$this->idPoll)) {
             if (!isset($this->resultView)) {
                 return $this->render('@vendor/lslsoft/yii2-poll/views/chart', [
                     'dataProvider' => $dataProvider,
@@ -173,7 +173,8 @@ class Poll extends Widget
                 'question' => $this->pollsProvider->question,
                 'sumRes' => $this->model->num]);
 
-        }else{
+        } else {
+            Yii::$app->session->set('poll-' . $this->idPoll, true);
             return $this->render('@vendor/lslsoft/yii2-poll/views/create', [
                 'model' => $this->model,
                 'pollsProvider' => $this->pollsProvider,]);
