@@ -65,6 +65,8 @@ class PollsAnswers extends \yii\db\ActiveRecord
         return $this->hasOne(Polls::className(), ['id' => 'id_poll']);
     }
 
+    public function get
+
     /**
      * @inheritdoc
      * @return PollsAnswersQuery the active query used by this AR class.
@@ -72,6 +74,11 @@ class PollsAnswers extends \yii\db\ActiveRecord
     public static function find()
     {
         return new PollsAnswersQuery(get_called_class());
+    }
+
+    public function getAnswers()
+    {
+        return $this->hasMany(Polls::className(), ['id' => 'id_poll']);
     }
 
 
