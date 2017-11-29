@@ -27,6 +27,7 @@ use Yii;
  */
 class Polls extends \yii\db\ActiveRecord {
 
+
     /**
      * @inheritdoc
      */
@@ -69,7 +70,7 @@ class Polls extends \yii\db\ActiveRecord {
      * @return \yii\db\ActiveQuery
      */
     public function getPollsAnswers() {
-        return $this->hasMany(PollsAnswers::className(), ['id_poll' => 'id']);
+        return $this->hasMany(PollsAnswers::className(), ['id' => 'id_polls']);
     }
 
     /**

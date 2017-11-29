@@ -75,10 +75,5 @@ class PollsAnswers extends \yii\db\ActiveRecord
         return new PollsAnswersQuery(get_called_class());
     }
 
-    public function getAnswers()
-    {
-        return $this->hasMany(Polls::className(), ['id' => 'id_poll']);
-    }
-
 
 }
