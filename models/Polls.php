@@ -16,12 +16,7 @@ use Yii;
  * @property integer $is_random
  * @property integer $anonymous
  * @property integer $show_vote
- * @property integer $created_at
- * @property integer $created_by
- * @property integer $updated_at
- * @property integer $updated_by
  * @property integer $deleted_at
- * @property integer $deleted_by
  *
  * @property PollsAnswers[] $pollsAnswers
  */
@@ -42,7 +37,7 @@ class Polls extends \yii\db\ActiveRecord {
             [['question', 'date_beg', 'date_end', 'allow_multiple', 'is_random', 'anonymous', 'show_vote'], 'required'],
             [['question'], 'string'],
             [['date_beg', 'date_end'], 'safe'],
-            [['allow_multiple', 'is_random', 'anonymous', 'show_vote','created_at','created_by','updated_at','updated_by','deleted_at','deleted_by'], 'integer'],
+            [['allow_multiple', 'is_random', 'anonymous', 'show_vote','deleted_at'], 'integer'],
         ];
     }
 

@@ -10,12 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $id_poll
  * @property string $answer
- * @property integer $created_at
- * @property integer $created_by
- * @property integer $updated_at
- * @property integer $updated_by
  * @property integer $deleted_at
- * @property integer $deleted_by
  *
  * @property Polls $idPoll
  */
@@ -38,7 +33,7 @@ class PollsAnswers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_poll', 'created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'], 'integer'],
+            [['id_poll', 'deleted_at'], 'integer'],
             [['answer'], 'required'],
             [['answer'], 'string'],
             [['id_poll'], 'exist', 'skipOnError' => true, 'targetClass' => Polls::className(), 'targetAttribute' => ['id_poll' => 'id']],

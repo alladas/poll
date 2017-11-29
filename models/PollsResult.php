@@ -11,12 +11,7 @@ use Yii;
  * @property integer $id_poll
  * @property integer $id_answer
  * @property integer $id_user
- * @property integer $created_at
- * @property integer $created_by
- * @property integer $updated_at
- * @property integer $updated_by
  * @property integer $deleted_at
- * @property integer $deleted_by
  */
 class PollsResult extends \yii\db\ActiveRecord
 {
@@ -61,7 +56,7 @@ class PollsResult extends \yii\db\ActiveRecord
             [['host'], 'string', 'length' => [0, 20], 'on' => ['default', self::SCENARIO_ANONYMOUS]],
             [['num', 'id_poll', 'id_answer'], 'integer', 'on' => self::SCENARIO_ANONYMOUS],
             [['id_poll', 'id_answer'], 'required', 'on' => self::SCENARIO_ANONYMOUS],
-            [['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'], 'integer'],
+            [['deleted_at'], 'integer'],
         ];
     }
 
