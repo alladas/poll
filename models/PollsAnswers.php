@@ -65,7 +65,6 @@ class PollsAnswers extends \yii\db\ActiveRecord
         return $this->hasOne(Polls::className(), ['id' => 'id_poll']);
     }
 
-    public function get
 
     /**
      * @inheritdoc
