@@ -26,26 +26,26 @@ class m171129_061747_add_user_interaction_related_columns_to_polls_related_table
         $this->addColumn('{{%polls_result}}', 'updated_by', $this->integer(11));
 
         $this->addForeignKey('fk_polls_deleted_by','{{%polls}}','deleted_by','{{%user}}', 'id');
-        $this->addForeignKey('fk_polls_answer_deleted_by','{{%polls_answer}}','deleted_by','{{%user}}', 'id');
+        $this->addForeignKey('fk_polls_answer_deleted_by','{{%polls_answers}}','deleted_by','{{%user}}', 'id');
         $this->addForeignKey('fk_polls_result_deleted_by','{{%polls_result}','deleted_by','{{%user}}', 'id');
         $this->addForeignKey('fk_polls_created_by','{{%polls}}','created_by','{{%user}}', 'id');
-        $this->addForeignKey('fk_polls_answer_created_by','{{%polls_answer}}','created_by','{{%user}}', 'id');
+        $this->addForeignKey('fk_polls_answer_created_by','{{%polls_answers}}','created_by','{{%user}}', 'id');
         $this->addForeignKey('fk_polls_result_created_by','{{%polls_result}','created_by','{{%user}}', 'id');
         $this->addForeignKey('fk_polls_updated_by','{{%polls}}','updated_by','{{%user}}', 'id');
-        $this->addForeignKey('fk_polls_answer_updated_by','{{%polls_answer}}','updated_by','{{%user}}', 'id');
+        $this->addForeignKey('fk_polls_answer_updated_by','{{%polls_answers}}','updated_by','{{%user}}', 'id');
         $this->addForeignKey('fk_polls_result_updated_by','{{%polls_result}','updated_by','{{%user}}', 'id');
     }
 
     public function safeDown()
     {
         $this->dropForeignKey('fk_polls_result_updated_by','{{%polls_result}}');
-        $this->dropForeignKey('fk_polls_answer_updated_by','{{%polls_answer}}');
+        $this->dropForeignKey('fk_polls_answer_updated_by','{{%polls_answers}}');
         $this->dropForeignKey('fk_polls_updated_by','{{%polls}}');
         $this->dropForeignKey('fk_polls_result_created_by','{{%polls_result}');
-        $this->dropForeignKey('fk_polls_answer_created_by','{{%polls_answer}}');
+        $this->dropForeignKey('fk_polls_answer_created_by','{{%polls_answers}}');
         $this->dropForeignKey('fk_polls_created_by','{{%polls}}');
         $this->dropForeignKey('fk_polls_result_deleted_by','{{%polls_result}');
-        $this->dropForeignKey('fk_polls_answer_deleted_by','{{%polls_answer}}');
+        $this->dropForeignKey('fk_polls_answer_deleted_by','{{%polls_answers}}');
         $this->dropForeignKey('fk_polls_deleted_by','{{%polls}}');
 
         $this->dropColumn('{{%polls_result}}','updated_by');
