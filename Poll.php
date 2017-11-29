@@ -54,7 +54,7 @@ class Poll extends Widget {
 		$answers = $this->model->id_answer;
 		foreach ( $answers as $id_answer ) {
 			$modelMulti = new PollsResult();
-			$modelMulti->id_user = $this->model->id_user;
+//			$modelMulti->id_user = $this->model->id_user;
 			$modelMulti->id_poll = $this->model->id_poll;
 			$modelMulti->num = $this->model->num;
 			$modelMulti->create_at = $this->model->create_at;

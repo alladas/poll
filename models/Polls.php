@@ -27,7 +27,6 @@ use Yii;
  */
 class Polls extends \yii\db\ActiveRecord {
 
-
     /**
      * @inheritdoc
      */
@@ -40,7 +39,7 @@ class Polls extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['question', 'date_beg', 'date_end', 'allow_mulitple', 'is_random', 'anonymous', 'show_vote'], 'required'],
+            [['question', 'date_beg', 'date_end', 'allow_multiple', 'is_random', 'anonymous', 'show_vote'], 'required'],
             [['question'], 'string'],
             [['date_beg', 'date_end'], 'safe'],
             [['allow_multiple', 'is_random', 'anonymous', 'show_vote','created_at','created_by','updated_at','updated_by','deleted_at','deleted_by'], 'integer'],
@@ -70,7 +69,7 @@ class Polls extends \yii\db\ActiveRecord {
      * @return \yii\db\ActiveQuery
      */
     public function getPollsAnswers() {
-        return $this->hasMany(PollsAnswers::className(), ['id' => 'id_polls']);
+        return $this->hasMany(PollsAnswers::className(), ['id_poll' => 'id']);
     }
 
     /**
