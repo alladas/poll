@@ -24,8 +24,6 @@ class m170122_211947_polls_result extends Migration
                 'id_answer'=> $this->integer(11)->notNull()->comment('№ of answer'),
                 'id_user'=> $this->integer(11)->notNull(),
                 'id'=> $this->primaryKey(11),
-                'create_at'=> $this->datetime()->notNull(),
-                'update_at'=> $this->datetime()->notNull(),
                 'ip'=> $this->string(20)->notNull(),
                 'host'=> $this->string(20)->null()->defaultValue(null),
             ],$tableOptions
