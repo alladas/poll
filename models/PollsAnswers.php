@@ -10,36 +10,46 @@ use Yii;
  * @property integer $id
  * @property integer $id_poll
  * @property string $answer
+ * @property integer $created_at
+ * @property integer $created_by
+ * @property integer $updated_at
+ * @property integer $updated_by
+ * @property integer $deleted_at
+ * @property integer $deleted_by
  *
- * @property Polls $idPoll 
+ * @property Polls $idPoll
  */
-class PollsAnswers extends \yii\db\ActiveRecord {
+class PollsAnswers extends \yii\db\ActiveRecord
+{
 
     /**
      * @inheritdoc
-     * 
+     *
      *  working with polls
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return 'polls_answers';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-                [['id_poll'], 'integer'],
-                [['answer'], 'required'],
-                [['answer'], 'string'],
-                [['id_poll'], 'exist', 'skipOnError' => true, 'targetClass' => Polls::className(), 'targetAttribute' => ['id_poll' => 'id']],
+            [['id_poll', 'created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'], 'integer'],
+            [['answer'], 'required'],
+            [['answer'], 'string'],
+            [['id_poll'], 'exist', 'skipOnError' => true, 'targetClass' => Polls::className(), 'targetAttribute' => ['id_poll' => 'id']],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'id' => Yii::t('polls', '№ answer'),
             'id_poll' => Yii::t('polls', '№ poll'),
@@ -50,7 +60,8 @@ class PollsAnswers extends \yii\db\ActiveRecord {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdPoll() {
+    public function getIdPoll()
+    {
         return $this->hasOne(Polls::className(), ['id' => 'id_poll']);
     }
 
@@ -58,10 +69,10 @@ class PollsAnswers extends \yii\db\ActiveRecord {
      * @inheritdoc
      * @return PollsAnswersQuery the active query used by this AR class.
      */
-    public static function find() {
+    public static function find()
+    {
         return new PollsAnswersQuery(get_called_class());
     }
 
-    
 
 }

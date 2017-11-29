@@ -11,8 +11,15 @@ use Yii;
  * @property integer $id_poll
  * @property integer $id_answer
  * @property integer $id_user
+ * @property integer $created_at
+ * @property integer $created_by
+ * @property integer $updated_at
+ * @property integer $updated_by
+ * @property integer $deleted_at
+ * @property integer $deleted_by
  */
-class PollsResult extends \yii\db\ActiveRecord {
+class PollsResult extends \yii\db\ActiveRecord
+{
     /**
      * @inheritdoc
      */
@@ -31,19 +38,21 @@ class PollsResult extends \yii\db\ActiveRecord {
 
     /**
      * @const can vote without sign up
-     * 
+     *
      */
     const SCENARIO_ANONYMOUS = 'anonymous';
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return 'polls_result';
     }
 
     /**
      * @inheritdoc
-     * 
+     *
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             [['num', 'id_poll', 'id_answer', 'id_user'], 'integer', 'on' => 'default'],
             [['id_poll', 'id_answer', 'id_user'], 'required', 'on' => 'default'],
@@ -52,6 +61,7 @@ class PollsResult extends \yii\db\ActiveRecord {
             [['host'], 'string', 'length' => [0, 20], 'on' => ['default', self::SCENARIO_ANONYMOUS]],
             [['num', 'id_poll', 'id_answer'], 'integer', 'on' => self::SCENARIO_ANONYMOUS],
             [['id_poll', 'id_answer'], 'required', 'on' => self::SCENARIO_ANONYMOUS],
+            [['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'], 'integer'],
         ];
     }
 
@@ -59,7 +69,8 @@ class PollsResult extends \yii\db\ActiveRecord {
      * @inheritdoc
      * @todo change 'app'/'polls'
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'num' => Yii::t('polls', 'Number of answers'),
             'id_poll' => Yii::t('polls', '№ poll'),
@@ -75,7 +86,8 @@ class PollsResult extends \yii\db\ActiveRecord {
      * @inheritdoc
      * @return PollsResultQuery the active query used by this AR class.
      */
-    public static function find() {
+    public static function find()
+    {
         return new PollsResultQuery(get_called_class());
     }
 
@@ -83,7 +95,8 @@ class PollsResult extends \yii\db\ActiveRecord {
      * Return record from polls_answer with predefined id
      * @return type PollAnswer
      */
-    public function getIdAnswer() {
+    public function getIdAnswer()
+    {
         return $this->hasOne(PollsAnswers::className(), ['id' => 'id_answer']);
     }
 
@@ -91,38 +104,42 @@ class PollsResult extends \yii\db\ActiveRecord {
      * Return text of answer
      * @return type string
      */
-    public function getAnswer() {
+    public function getAnswer()
+    {
         return $this->idAnswer->answer;
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser() {
+    public function getIdUser()
+    {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 
     /**
      * Return all polls results for certain poll
-     * @param type $id_poll 
+     * @param type $id_poll
      * @return type
      */
-    public static function getPollsId($id_poll) {
+    public static function getPollsId($id_poll)
+    {
         return self::find()
-                        ->where('id_poll=:id_poll', ['id_poll' => $id_poll])
-                        ->all();
+            ->where('id_poll=:id_poll', ['id_poll' => $id_poll])
+            ->all();
     }
 
     /**
      * Return max value of field num -
      * amount of voting for multiple answers
-     * @param type $id_poll integer - 
+     * @param type $id_poll integer -
      * @return type integer
      */
-    public static function getMaxNum($id_poll) {
+    public static function getMaxNum($id_poll)
+    {
         return self::find()
-                        ->where('id_poll=:id_poll', ['id_poll' => $id_poll])
-                        ->max('num');
+            ->where('id_poll=:id_poll', ['id_poll' => $id_poll])
+            ->max('num');
     }
 
     /**
@@ -130,12 +147,13 @@ class PollsResult extends \yii\db\ActiveRecord {
      * @param integer $id_poll
      * @return PollsResult set of records
      */
-    public static function getResults($id_poll) {
+    public static function getResults($id_poll)
+    {
         return self::find()
-                        ->select('id_answer, count(`id_answer`) as `res`')
-                        ->where(['polls_result.id_poll:=id_poll', ['id_poll' => $id_poll]])
-                        ->joinWith('idAnswer')
-                        ->groupBy(['id_answer']);
+            ->select('id_answer, count(`id_answer`) as `res`')
+            ->where(['polls_result.id_poll:=id_poll', ['id_poll' => $id_poll]])
+            ->joinWith('idAnswer')
+            ->groupBy(['id_answer']);
     }
 
 }
