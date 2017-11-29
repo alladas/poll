@@ -51,7 +51,7 @@ class PollsResult extends \yii\db\ActiveRecord
         return [
             [['num', 'id_poll', 'id_answer', 'id_user'], 'integer', 'on' => 'default'],
             [['id_poll', 'id_answer', 'id_user'], 'required', 'on' => 'default'],
-            [['create_at'], 'date', 'format' => 'php:Y-m-d H:i:s', 'on' => ['default', self::SCENARIO_ANONYMOUS]],
+//            [['create_at'], 'date', 'format' => 'php:Y-m-d H:i:s', 'on' => ['default', self::SCENARIO_ANONYMOUS]],
             [['ip'], 'ip', 'on' => ['default', self::SCENARIO_ANONYMOUS]],
             [['host'], 'string', 'length' => [0, 20], 'on' => ['default', self::SCENARIO_ANONYMOUS]],
             [['num', 'id_poll', 'id_answer'], 'integer', 'on' => self::SCENARIO_ANONYMOUS],
@@ -71,7 +71,7 @@ class PollsResult extends \yii\db\ActiveRecord
             'id_poll' => Yii::t('polls', '№ poll'),
             'id_answer' => Yii::t('polls', '№ answer'),
             'id_user' => Yii::t('polls', 'Id User'),
-            'create_at' => Yii::t('polls', 'Created at'),
+//            'create_at' => Yii::t('polls', 'Created at'),
             'ip' => Yii::t('polls', 'User IP'),
             'host' => Yii::t('polls', 'User host')
         ];

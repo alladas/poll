@@ -57,7 +57,7 @@ class Poll extends Widget {
 //			$modelMulti->id_user = $this->model->id_user;
 			$modelMulti->id_poll = $this->model->id_poll;
 			$modelMulti->num = $this->model->num;
-			$modelMulti->create_at = $this->model->create_at;
+//			$modelMulti->create_at = $this->model->create_at;
 			$modelMulti->ip = $this->model->ip;
 			$modelMulti->host = $this->model->host;
 			$modelMulti->id_answer = $id_answer;
@@ -87,7 +87,7 @@ class Poll extends Widget {
 		} else {
 			$this->model->num++;
 		}
-		$this->model->create_at = date( "Y-m-d H:i:s" );
+//		$this->model->create_at = date( "Y-m-d H:i:s" );
 		$this->model->ip = Yii::$app->request->getUserIP();
 		$this->model->host = Yii::$app->request->getUserHost();
 		if ( $this->pollsProvider->anonymous ) {
