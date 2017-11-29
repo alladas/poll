@@ -8,10 +8,10 @@ use yii\helpers\Html;
 
 
 ?>
-<div class="polls-result-show">
+<div class="polls-result-show" style="background-color:white;width:400px;padding:10px;margin:10px;">
 
-    <h2><?= Html::encode(Yii::t('polls', $question)) ?></h2>
-    <h3><?= Html::encode(Yii::t('polls', "The results of the poll")) ?></h3>
+    <h3><?= Html::encode(Yii::t('polls', $question)) ?></h3>
+    <h4><?= Html::encode(Yii::t('polls', "The results of the poll")) ?></h4>
 
     <?php
 
@@ -60,7 +60,7 @@ use yii\helpers\Html;
     
     if ($sumRes > 0) {
         foreach ($res as $val) {
-            echo "<h3>" . Yii::t('polls', $val['answer']) . ":  " . $val['res'] . " (" . number_format($val['res'] / $sumRes * 100, 2) . "%)" . "</h3>";
+            echo "<h5>" . Yii::t('polls', $val['answer']) . ":  " . $val['res'] . " (" . number_format($val['res'] / $sumRes * 100, 2) . "%)" . "</h5>";
             echo yii\bootstrap\Progress::widget([
                 'percent' => intval($val['res']) / $maxVal * 100,
             ]);

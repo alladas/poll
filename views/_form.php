@@ -16,7 +16,7 @@ use lslsoft\poll\helpers\LslHelper;
 ?>
 
 
-<div class="polls-result-form">
+<div class="polls-result-form" style="background-color:white;width:400px;padding:10px;margin:10px;">
 
 	<?php
 

@@ -144,6 +144,7 @@ class Poll extends Widget
                 $modelsaved = $this->createResult();
             } else {
                 $modelsaved = $this->model->save();
+                redirect('/');
             }
             if (!$modelsaved) {
                 return $this->render('@vendor/lslsoft/yii2-poll/views/create', [
