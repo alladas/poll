@@ -17,6 +17,7 @@ use Yii;
 class PollsAnswers extends \yii\db\ActiveRecord
 {
 
+    public $res;
     /**
      * @inheritdoc
      *
@@ -33,7 +34,7 @@ class PollsAnswers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_poll', 'deleted_at'], 'integer'],
+            [['id_poll', 'deleted_at','res'], 'integer'],
             [['answer'], 'required'],
             [['answer'], 'string'],
             [['id_poll'], 'exist', 'skipOnError' => true, 'targetClass' => Polls::className(), 'targetAttribute' => ['id_poll' => 'id']],
@@ -47,7 +48,7 @@ class PollsAnswers extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('polls', '№ answer'),
-            'id_poll' => Yii::t('polls', '№ poll'),
+            'id_poll' => Yii::t('polls', '# poll'),
             'answer' => Yii::t('polls', 'Answer'),
         ];
     }
