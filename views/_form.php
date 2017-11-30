@@ -52,7 +52,7 @@ use lslsoft\poll\helpers\LslHelper;
 
 
 	$answersProvider = PollsAnswers::find()
-			->where( 'id_poll=:id', [ 'id' => $pollsProvider->id ] )
+			->where( 'id_poll=:id', [ 'id' => $pollsProvider->id ] )->andWhere(['deleted_at' => null])
 			->all();
 	$answer1 = ArrayHelper::map( $answersProvider, 'id', 'answer' );
 	$answer = array_map('translate1', $answer1);
