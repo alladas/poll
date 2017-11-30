@@ -137,6 +137,7 @@ class Poll extends Widget
         $modelsaved = false;
         if ($this->model->load(Yii::$app->request->post())) {
             $this->setModel();
+            Yii::$app->session->set('poll-' . $this->idPoll, true);
             /**
              * @todo I need do something with guest user. now i have user with ID=0;
              */
@@ -175,7 +176,7 @@ class Poll extends Widget
                 'sumRes' => $this->model->num]);
 
         } else {
-            Yii::$app->session->set('poll-' . $this->idPoll, true);
+//            Yii::$app->session->set('poll-' . $this->idPoll, true);
             return $this->render('@vendor/lslsoft/yii2-poll/views/create', [
                 'model' => $this->model,
                 'pollsProvider' => $this->pollsProvider,]);
