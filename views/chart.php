@@ -3,6 +3,7 @@
 /**
  * show results. simple horizontal bar chart
  */
+
 use yii\bootstrap\Progress;
 use yii\helpers\Html;
 
@@ -21,7 +22,8 @@ use yii\helpers\Html;
      * @param type $b
      * @return int
      */
-    function cmp($a, $b) {
+    function cmp($a, $b)
+    {
         if ($a['res'] == $b['res']) {
             return 0;
         }
@@ -35,9 +37,10 @@ use yii\helpers\Html;
     }
     $res = array();
 
-    
+
     foreach ($model as $answer) {
-        $res[] = ['answer' => $answer->idAnswer->answer, 'res' => $answer->res];        
+//        var_dump($answer);exit;
+        $res[] = ['answer' => $answer->answer, 'res' => $answer->res];
     }
 
     if (!isset($sumRes)) {
@@ -47,17 +50,17 @@ use yii\helpers\Html;
         }
     }
     /**
-     * sort result in 
+     * sort result in
      */
     usort($res, "cmp");
-    
+
     /**
      * Max value of polls, using for showing results
      * Maximum values has maximum bar
      * @var integer $maxVal Max value of polls, using for showing results
      */
     $maxVal = intval($res[0]['res']);
-    
+
     if ($sumRes > 0) {
         foreach ($res as $val) {
             echo "<h5>" . Yii::t('polls', $val['answer']) . ":  " . $val['res'] . " (" . number_format($val['res'] / $sumRes * 100, 2) . "%)" . "</h5>";
@@ -66,7 +69,6 @@ use yii\helpers\Html;
             ]);
         }
     }
-   $max
     ?>
 
 </div>
