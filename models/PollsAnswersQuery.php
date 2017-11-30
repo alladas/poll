@@ -31,4 +31,9 @@ class PollsAnswersQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function notDeleted()
+    {
+        return $this->andWhere(['deleted_at' => null])->all();
+    }
 }
