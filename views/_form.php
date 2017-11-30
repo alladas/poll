@@ -75,7 +75,7 @@ use lslsoft\poll\helpers\LslHelper;
 
 
     <div class="form-group">
-		<?= Html::submitButton( $model->isNewRecord ? Yii::t( 'polls', 'Send' ) : Yii::t( 'polls', 'Update' ), [ 'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary' ] ) ?>
+		<?= Html::submitButton( $model->isNewRecord ? Yii::t( 'polls', 'Submit' ) : Yii::t( 'polls', 'Update' ), [ 'class' => $model->isNewRecord ? 'btn btn-info btn-brand' : 'btn btn-info btn-brand' ] ) ?>
     </div>
 
 	<?php
